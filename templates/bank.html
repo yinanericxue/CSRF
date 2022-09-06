@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bank</title>
+</head>
+<body>
+
+<form action="/account" method="POST">
+    <l>Sender's Name</l> <BR>
+    <input type="text" name="sender" value=""> </l> <BR>
+    <l>Recipient's Name</l> <BR>
+    <input type="text" name="recipient" value=""> </l> <BR>
+    <l>Transaction Type</l> <BR>
+    <select name="transaction">
+        <option value ="Transfer">Transfer</option>
+        <option value ="Request">Request</option>
+    </select></l> <BR>
+    <l>Amount</l> <BR>
+    <input type="text" name="amount" value=""> </l> <BR>
+    <l>Bank</l> <BR>
+    <input type="text" name="account" value="Bank of America"> </l> <BR>
+  <input type="submit" value="submit">
+</form>
+
+</body>
+</html>
