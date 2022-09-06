@@ -1,7 +1,6 @@
 from flask import Flask, render_template, request, url_for, session, redirect
 from flask_sqlalchemy import SQLAlchemy
 
-
 app = Flask(__name__)
 app.secret_key = 'adk#dkjf'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://cloud:2022db!UW@dbprivate.gwdemo.net/bulletin'
@@ -27,7 +26,7 @@ def index():
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
-    if request.method == 'POST': # set the encrypted cookie - session
+    if request.method == 'POST':
         tUsername = request.form['username']
         tPassword = request.form['password']
         tUser = Users.query.filter_by(username=tUsername).first()
@@ -47,7 +46,6 @@ def login():
 
 @app.route('/logout')
 def logout():
-   # remove the username from the session if it is there
    session.pop('username', None)
    return redirect(url_for('index'))
 
@@ -56,16 +54,11 @@ def account():
     if 'logged' not in session:
         return 'Please log in first!'
     if request.method == 'POST':
-        name1 = request.form.get('sender')
-        name2 = request.form.get('recipient')
-        BBB = request.form.get('amount')
-        CCC = request.form.get('account')
         if(request.form.get('select') == 'Transfer'):
-            temp = name1 + " successfully transferred" + " $" + BBB + " to " + name2 + " through " + CCC
+            response = request.form.get('sender') + " successfully transferred" + " $" + request.form.get('amount') + " to " + request.form.get('recipient') + " through " + request.form.get('account')
         else:
-            temp = name1 + " successfully requested" + " $" + BBB + " from " + name2 + " through " + CCC
-        print(temp)
-        return '<h1>Transaction Complete: ' + temp + '</h1>' + '<a href="%s">Go back</a>' % url_for('account')
+            response = request.form.get('sender') + " successfully requested" + " $" + request.form.get('amount') + " from " + request.form.get('recipient') + " through " + request.form.get('account')
+        return '<h1>Transaction Complete: ' + response + '</h1>' + '<a href="%s">Go back</a>' % url_for('account')
     return render_template("bank.html")
 
 if __name__ == '__main__':
