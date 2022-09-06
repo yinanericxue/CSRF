@@ -1,4 +1,5 @@
 ## CSRF
+This is a simulation of how a CSRF Cybertheft would occur if there are no built-in protections. The banking website with the 8000 port number is just like most monetary transferring website, where each user's information is stored on a secure database, the server automatically saves a session during a login, enter the sender/receipient/transaction type/amount/banking institution, and click send.
 ![Screen Shot 2022-09-05 at 10 49 23 PM](https://user-images.githubusercontent.com/102645083/188560731-eaef1187-bcc2-4b26-b480-4bff96aa453f.png)
 
 ![Screen Shot 2022-09-05 at 10 49 33 PM](https://user-images.githubusercontent.com/102645083/188560751-0304d73f-85bf-4a0d-b0d8-11eb4e31e20e.png)
